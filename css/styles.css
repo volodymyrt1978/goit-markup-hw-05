@@ -149,7 +149,23 @@ body {
 
 /* Синим цветом подсвечивается активная страница */
 .navigation-link.current {
+    position: relative;
     color: var(--active-link-color);
+
+}
+
+.current::before {
+    content: "";
+    
+    position: absolute;
+    bottom: -1px;
+    
+    width: 100%;
+    height: 4px;
+    background-color: var(--active-link-color);
+    border-radius: 2px;
+    border: none;
+
 }
 
 /*стилизация e-mail и телефона переопределение цвета текста*/
@@ -308,6 +324,8 @@ body {
 }
 
 .trends-content .item {
+    position: relative;
+
     flex-basis: calc(100%/3);
     margin-left: var(--projects-item-gap);
 }
@@ -321,11 +339,27 @@ body {
 
 .trends.title,
 .teamsection .title,
-.clients .title
-        {font-size: 36px;
-        line-height: 1.17;
-        text-align: center;
-        color: var(--default-text-color);}
+.clients .title {
+    font-size: 36px;
+    line-height: 1.17;
+    text-align: center;
+    color: var(--default-text-color);}
+
+.item .description {
+    position: absolute;
+    bottom: 0;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+
+    text-transform: uppercase;
+    color: #FFFFFF;
+
+    background-color: rgba(47, 48, 58, 0.8);
+}
 
 /*стилизация секции "Наша команда"*/
 
