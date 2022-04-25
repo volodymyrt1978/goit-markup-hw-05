@@ -11,6 +11,7 @@
     --accessory-background-color:rgba(245, 244, 250, 1);
     --projects-item-gap: 30px;
     --default-padding-gap: 94px;
+    --header-bottom-border: 1px;
 }
 
 /* border box*/
@@ -81,7 +82,7 @@ body {
 
 /* разбиваю текст логотипа на две части по цвету шрифта*/
 .header-decor {
-    border-bottom: 1px solid #ECECEC;
+    border-bottom: var(--header-bottom-border) solid #ECECEC;
 }
 
 .logo-header {
@@ -154,11 +155,12 @@ body {
 
 }
 
-.current::before {
+.current::after {
     content: "";
     
     position: absolute;
-    bottom: -1px;
+    bottom: calc(-1*var(--header-bottom-border));
+    right: 0;
     
     width: 100%;
     height: 4px;
@@ -684,7 +686,7 @@ body {
     margin-top: calc(-1 * var(--projects-item-gap));
 }
 
-.projects .default-links {
+.projects-active {
     display: block;
 }
 
@@ -694,12 +696,40 @@ body {
     margin-top: var(--projects-item-gap);
 }
 
-.projects a:hover,
-.projects a:focus {
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
-    0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
+.project-thumb {
+    position: relative;
 }
+
+.project-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+
+    width: 100%;
+    height: 100%;
+    padding: 63px 24px 63px 24px;
+
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.03em;
+
+    color: var(--contrast-text-color);
+    background-color: rgba(33, 150, 243, 0.9);
+}
+
+.projects-active:hover .project-description,
+.projects-active:focus .project-description {
+    opacity: 1;
+}
+
+.projects-active:hover,
+.projects-active:focus {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
+        0px 4px 4px rgba(0, 0, 0, 0.06),
+        1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
 
 .projects-title {
     /* font-weight: 700; браузер по-умолчанию*/
@@ -709,7 +739,7 @@ body {
     color:var(--default-text-color);
 }
 
-.projects-description {
+.projects-brief {
     margin-top: 4px;
 
     font-size: 16px;
