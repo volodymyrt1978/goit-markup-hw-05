@@ -12,7 +12,7 @@
     --projects-item-gap: 30px;
     --default-padding-gap: 94px;
     --header-bottom-border: 1px;
-    --animation-duration: 2500ms;
+    --animation-duration: 250ms;
     --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -73,8 +73,6 @@ img {
 
 body {
     font-family: Roboto, sans-serif;
-    /* font-style: normal; браузер по-умолчанию*/
-    /* font-weight: 400; браузер по-умолчанию*/
     font-size: 14px;
     line-height: 1.71;
     letter-spacing: 0.03em;
@@ -249,7 +247,7 @@ body {
     padding: 10px 32px 10px 32px;
     
     margin-left: auto;
-    margin-right: auto; /* наверно это ошибка. при изменении масштаба страницы вылазит за пределы контейнера */
+    margin-right: auto;
 
     font-family: Roboto, sans-serif;
     font-style: normal; 
@@ -546,8 +544,7 @@ body {
     position: absolute;
     top: 8px;
     right: 8px;
-    /* transform: translate(-8px, -8px); */
-    
+       
     display: inline-flex;
     flex-wrap: wrap;
     align-content: center;
@@ -590,7 +587,6 @@ body {
 
 .content-position {
     margin-top: 20px;
-    /* border: 1px solid red; */
 }
 .pagefoot .address {
     font-style: normal;
@@ -729,14 +725,14 @@ body {
 
 .project-thumb {
     position: relative;
+    overflow: hidden;
 }
 
 .project-description {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0;
-
+    
     width: 100%;
     height: 100%;
     padding: 63px 24px 63px 24px;
@@ -748,14 +744,16 @@ body {
     color: var(--contrast-text-color);
     background-color: rgba(33, 150, 243, 0.9);
 
-    transition-property: opacity;
+    transform: translateY(100%);
+
+    transition-property: transform;
     transition-duration: var(--animation-duration);
     transition-timing-function: var(--timing-function);
 }
 
 .projects-active:hover .project-description,
 .projects-active:focus .project-description {
-    opacity: 1;
+    transform: translateY(0%);
 }
 
 .projects-active:hover,
@@ -767,7 +765,6 @@ body {
 
 
 .projects-title {
-    /* font-weight: 700; браузер по-умолчанию*/
     font-size: 18px;
     line-height: 2;
     letter-spacing: 0.06em;
